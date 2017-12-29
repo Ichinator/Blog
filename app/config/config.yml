@@ -79,6 +79,10 @@ fos_user:
 easy_admin:
     entities:
         - AppBundle\Entity\User
-        #- AppBundle\Entity\Category
-        #- AppBundle\Entity\Article
+        - AppBundle\Entity\News
+        - AppBundle\Entity\Category
         #- AppBundle\Entity\Product
+
+kms_froala_editor:
+
+  language: "fr"

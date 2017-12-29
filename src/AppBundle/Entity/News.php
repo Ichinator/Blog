@@ -23,7 +23,7 @@ class News
   /**
      * @ORM\Column(type="datetime")
      */
-  private $date;
+  private $dateCreate;
 
   /**
      * @ORM\Column(type="string", length=100)
@@ -48,8 +48,11 @@ class News
   /**
      * @ORM\Column(type="string", length=100)
      */
-  private $categories;
+  private $categoryName;
 
+  public function __construct(){
+    $this->dateCreate = new \DateTime('NOW');
+  }
     /**
      * Get id
      *
@@ -179,28 +182,51 @@ class News
     {
         return $this->published;
     }
-
     /**
-     * Set categories
+     * Set dateCreate
      *
-     * @param string $categories
+     * @param \DateTime $dateCreate
      *
      * @return News
      */
-    public function setCategories($categories)
+    public function setDateCreate($dateCreate)
     {
-        $this->categories = $categories;
+        $this->dateCreate = $dateCreate;
 
         return $this;
     }
 
     /**
-     * Get categories
+     * Get dateCreate
+     *
+     * @return \DateTime
+     */
+    public function getDateCreate()
+    {
+        return $this->dateCreate;
+    }
+
+    /**
+     * Set categoryName.
+     *
+     * @param string $categoryName
+     *
+     * @return News
+     */
+    public function setCategoryName($categoryName)
+    {
+        $this->categoryName = $categoryName;
+
+        return $this;
+    }
+
+    /**
+     * Get categoryName.
      *
      * @return string
      */
-    public function getCategories()
+    public function getCategoryName()
     {
-        return $this->categories;
+        return $this->categoryName;
     }
 }
