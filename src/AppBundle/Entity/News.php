@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
@@ -47,12 +48,17 @@ class News
 
   /**
      * @ORM\Column(type="string", length=100)
+     * @ORM\ManyToOne(targetEntity="Category")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      */
-  private $categoryName;
+
+  private $category;
 
   public function __construct(){
     $this->dateCreate = new \DateTime('NOW');
+    $this->news = new ArrayCollection();
   }
+
     /**
      * Get id
      *
@@ -207,26 +213,26 @@ class News
     }
 
     /**
-     * Set categoryName.
+     * Set category.
      *
-     * @param string $categoryName
+     * @param string $category
      *
      * @return News
      */
-    public function setCategoryName($categoryName)
+    public function setCategory($category)
     {
-        $this->categoryName = $categoryName;
+        $this->category = $category;
 
         return $this;
     }
 
     /**
-     * Get categoryName.
+     * Get category.
      *
      * @return string
      */
-    public function getCategoryName()
+    public function getCategory()
     {
-        return $this->categoryName;
+        return $this->category;
     }
 }

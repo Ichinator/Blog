@@ -7,6 +7,7 @@ imports:
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: fr
+    imageDirectoryNews: '%kernel.project_dir%/web/upload/imageDirectoryNews'
 
 framework:
     #esi: ~
@@ -86,3 +87,11 @@ easy_admin:
 kms_froala_editor:
 
   language: "fr"
+
+#vich_uploader:
+#    db_driver: orm # or mongodb or propel or phpcr
+#
+#    mappings:
+#        product_image:
+#            uri_prefix: /images/products
+#            upload_destination: '%kernel.project_dir%/public/images/products'

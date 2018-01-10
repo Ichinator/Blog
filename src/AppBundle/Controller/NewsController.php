@@ -4,7 +4,6 @@
 
 	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 	use Symfony\Component\HttpFoundation\Request;
-	use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 	use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 	use AppBundle\Entity\News;
 	use AppBundle\Form\NewsType;
@@ -26,6 +25,7 @@
 			$form->handleRequest($request);
 
 			if($form->isSubmitted()){
+
 				$em = $this->getDoctrine()->getManager();
 
 				$em->persist($news);
@@ -37,7 +37,16 @@
 
 			$formView = $form->createView();
 
-			 return $this->render('news.html.twig', array('form'=>$formView));
+			 return $this->render('default/news.html.twig', array('form'=>$formView));
+		}
+
+		/**
+     	* @Route("/showNews", name="showNews")
+     	*/
+     	public function showAction(Request $request){
+			$repository=$this->getDoctrine()->getRepository('AppBundle:News');
+			$allnews = $repository->findAll();
+			return $this->render('default/showNews.html.twig', array('news'=>$allnews));
 		}
 	}
 

@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+{% block body %}
+{{ parent() }}
+<p>Voici les articles en gros bordel sa mère !</p>
+	{% for new in news %}
+	    {% if new.published %}
+		    <li><p>id de l'article: </p>{{ new.id }}</li>
+		    <li><p>Titre: </p>{{ new.title }}</li>
+		    <li><p>Auteur: </p>{{ new.author }}</li>
+		    <li>{{ new.content|raw }}</li>
+		    <li><p>Catégorie: </p>{{ new.category }}</li>
+		    <li><p>Date de création: </p>{{ new.dateCreate|date('d/m/Y') }}</li>
+	    {% endif %}
+	{% endfor %}
+{% endblock %}

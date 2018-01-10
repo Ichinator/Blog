@@ -21,7 +21,7 @@ class Category
      * @ORM\Column(type="string", length=100)
      */
     private $categoryName;
-
+    
     /**
      * Get id
      *
